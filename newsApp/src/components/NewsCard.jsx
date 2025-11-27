@@ -11,15 +11,15 @@ const NewsCard = ({ article }) => {
         className="w-full h-48 object-cover bg-gray-400"
       />
       <div className="p-4">
-        <Link to={link}>
+        <Link to={link} className=" text-gray-500">
           <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 transition">
-            {description}
+            {title}
           </h2>
         </Link>
-        <p>
-          {title?.lenght > 100
-            ? title.slice(0, 100) + "..."
-            : title}
+        <p className=" text-gray-500">
+          {description?.lenght > 100
+            ? description.slice(0, 100) + "..."
+            : description}
         </p>
         <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
             <span>By {source_name||"Adsız"}</span>

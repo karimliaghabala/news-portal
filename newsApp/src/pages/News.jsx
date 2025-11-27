@@ -5,10 +5,12 @@ import NewsCard from "../components/NewsCard";
 const News = ({ country, category, articles, setArticles }) => {
   
 const fetchAllNews = async () => {
+  // https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}
+  // `https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`
   
   try {
     const res = await axios.get(
-      `https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}`
     );
       
     setArticles(res.data.results);
