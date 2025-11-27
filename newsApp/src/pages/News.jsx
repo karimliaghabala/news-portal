@@ -7,14 +7,12 @@ const News = ({ country, category, articles, setArticles }) => {
 const fetchAllNews = async () => {
   // https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}
   // `https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`
+  // https://api.collectapi.com/news/getNews?country=tr&tag=general
   
   try {
-    const res = await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}`
-    );
-      
+    const res = await axios.get(`https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`);
     setArticles(res.data.results);
-    console.log(res.data.results);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }
