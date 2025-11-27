@@ -47,23 +47,23 @@ const Navbar = () => {
           })}
         </div>
         <div className=" flex items-center justify-center gap-4">
-          <div className="relative bg-gray-200 p-2 rounded-lg">
+          <div className="relative bg-gray-200 p-2 rounded-lg  dark:text-gray-200 dark:bg-blue-400">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <input
               type="text"
               placeholder="Search news..."
-              className="md:pl-10 pl-7 w-30 md:w-64 outline=none focus:outline-none"
+              className="md:pl-10 pl-7 w-30 md:w-64 outline=none focus:outline-none "
             />
           </div>
           <button
             onClick={toggleTheme}
-            className="bg-gray-200 px-3 py-3 rounded-lg cursor-pointer"
+            className="bg-gray-200 px-3 py-3 rounded-lg cursor-pointer dark:text-gray-200 dark:bg-blue-400"
           >
             {theme === "light" ? <FaMoon /> : <FaSun />}
           </button>
           {/* Mobile menu button */}
 
-          <button className="bg-gray-200 px-2 py-2 rounded-lg md:hidden">
+          <button className="bg-gray-200 px-2 py-2 rounded-lg md:hidden  dark:text-gray-200 dark:bg-blue-400" >
             <Menu size={25} />
           </button>
         </div>
