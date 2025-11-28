@@ -5,9 +5,6 @@ import NewsCard from "../components/NewsCard";
 const News = ({ country, category, articles, setArticles }) => {
   
 const fetchAllNews = async () => {
-  // https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}
-  // `https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`
-  // https://api.collectapi.com/news/getNews?country=tr&tag=general
   
   try {
     const res = await axios.get(`https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`);
@@ -20,14 +17,6 @@ const fetchAllNews = async () => {
   useEffect(() => {
   fetchAllNews();
   }, []);
-
-    // useEffect(()=>{
-    //     const getDate = async()=>{
-    //         const {data} = await axios.get(`https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`)
-    //         console.log(data.results)
-    //     }
-    // getDate()
-    // },[])
 
   return (
     <div className=" bg-gray-200 dark:bg-gray-800 py-24 px-4 md:px-0">

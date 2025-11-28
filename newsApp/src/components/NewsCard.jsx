@@ -1,8 +1,8 @@
-import { Link } from "lucide-react";
+import { Link } from "react-router-dom";
 import React from "react";
 
 const NewsCard = ({ article }) => {
-  const { source, source_name, title, description, link, image_url } = article;
+  const { pubDate, source_id, title, description, link, image_url,source_url } = article;
   return (
     <div className="max-w-md mx-auto bg-white dark:bg-gray-900 hover:scale-105 transition-all rounded-xl shadow-md overflow-hidden hover:shadow-lg duration-300">
       <img
@@ -17,12 +17,16 @@ const NewsCard = ({ article }) => {
           </h2>
         </Link>
         <p className=" text-gray-500">
-          {description?.lenght > 100
-            ? description.slice(0, 100) + "..."
+          {description?.lenght > 80
+            ? description.slice(0,80) + "..."
             : description}
         </p>
         <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-            <span>By {source_name||"Adsız"}</span>
+          <span>By {source_id || "Mənbə göstərilməyib"}</span>
+          <p>{new Date(pubDate).toLocaleDateString()}</p>
+        </div>
+        <div className="mt-1 text-xs text-blue-500 font-medium">
+            Keçid: {source_url}
         </div>
       </div>
     </div>
