@@ -17,8 +17,8 @@ const NewsCard = ({ article }) => {
           </h2>
         </Link>
         <p className=" text-gray-500">
-          {description?.lenght > 80
-            ? description.slice(0,80) + "..."
+          {description?.lenght > 40
+            ? description.slice(0,40) + "..."
             : description}
         </p>
         <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">

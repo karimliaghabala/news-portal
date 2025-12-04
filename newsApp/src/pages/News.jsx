@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import NewsCard from "../components/NewsCard";
 
-const News = ({ country, category, articles, setArticles }) => {
+const News = ({ country, category, articles, setArticles,language }) => {
   
 const fetchAllNews = async () => {
   
   try {
-    const res = await axios.get(`https://newsdata.io/api/1/latest? apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=az&category=${category}`);
+    
+    // const res = await axios.get(`https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=${language}&category=${category}&removeduplicate=0`);
+    const res = await axios.get(`https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=${language}&category=${category}&removeduplicate=0`);
+  
     setArticles(res.data.results);
     console.log(res);
   } catch (error) {

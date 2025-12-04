@@ -14,7 +14,7 @@ const App = () => {
     <BrowserRouter>
      <Navbar />
       <Routes>
-        <Route path="/" element={<News country={'az'} category={'business,entertainment,health,science,sports'} articles={articles} setArticles={setArticles} />} />
+        <Route path="/" element={<News country={'az'} category={'business,education,science,sports,technology'} language={'az'} articles={articles} setArticles={setArticles} />} />
       </Routes>
     </BrowserRouter>
   )
