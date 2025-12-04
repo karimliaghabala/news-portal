@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import News from "./pages/News";
 import { ThemeContext } from "./context/ThemeContext";
@@ -12,12 +12,71 @@ const App = () => {
   }, [theme]);
   return (
     <BrowserRouter>
-     <Navbar />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<News country={'az'} category={'business,education,science,sports,technology'} language={'az'} articles={articles} setArticles={setArticles} />} />
+        <Route
+          path="/"
+          element={
+            <News
+              country={"az"}
+              category={"education"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />{" "}
+        <Route
+          path="/business"
+          element={
+            <News
+              country={"az"}
+              category={"business"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />{" "}
+        <Route
+          path="/science"
+          element={
+            <News
+              country={"az"}
+              category={"science"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />{" "}
+        <Route
+          path="/technology"
+          element={
+            <News
+              country={"az"}
+              category={"technology"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />{" "}
+        <Route
+          path="/sports"
+          element={
+            <News
+              country={"az"}
+              category={"sports"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default App;
