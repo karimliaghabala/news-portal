@@ -12,21 +12,21 @@ const App = () => {
   }, [theme]);
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar  />
       <Routes>
         <Route
           path="/"
           element={
             <News
               country={"az"}
-              category={"education"}
+              category={"business"}
               language={"az"}
               articles={articles}
               setArticles={setArticles}
             />
           }
-        />{" "}
-        <Route
+        />
+            <Route
           path="/business"
           element={
             <News
@@ -37,19 +37,19 @@ const App = () => {
               setArticles={setArticles}
             />
           }
-        />{" "}
+        />
         <Route
-          path="/science"
+          path="/world"
           element={
             <News
               country={"az"}
-              category={"science"}
+              category={"world"}
               language={"az"}
               articles={articles}
               setArticles={setArticles}
             />
           }
-        />{" "}
+        />
         <Route
           path="/technology"
           element={
@@ -61,13 +61,25 @@ const App = () => {
               setArticles={setArticles}
             />
           }
-        />{" "}
+        />
         <Route
           path="/sports"
           element={
             <News
               country={"az"}
               category={"sports"}
+              language={"az"}
+              articles={articles}
+              setArticles={setArticles}
+            />
+          }
+        />
+          <Route
+          path="/education"
+          element={
+            <News
+              country={"az"}
+              category={"education"}
               language={"az"}
               articles={articles}
               setArticles={setArticles}

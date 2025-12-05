@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import NewsCard from "../components/NewsCard";
 
-const News = ({ country, category, articles, setArticles, language }) => {
+const News = ({
+  country,
+  category,
+  articles,
+  setArticles,
+  language,
+}) => {
   const fetchAllNews = async () => {
     try {
-      // const res = await axios.get(`https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=${language}&category=${category}&removeduplicate=0`);
-      const res = await axios.get(
-        `https://newsdata.io/api/1/latest?apikey=${
-          import.meta.env.VITE_API_KEY
-        }&country=${country}&language=${language}&category=${category}&removeduplicate=0`
-      );
+      // const res = await axios.get(`https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_API_KEY}&q=search&country=az&category=business,education,sports,technology,world&removeduplicate=0`);
+      const res = await axios.get(`https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_API_KEY}&country=${country}&language=${language}&category=${category}&removeduplicate=0`);
 
       setArticles(res.data.results);
       console.log(res);
@@ -20,7 +22,7 @@ const News = ({ country, category, articles, setArticles, language }) => {
   };
   useEffect(() => {
     fetchAllNews();
-  }, []);
+  }, [category]);
 
   return (
     <div className=" bg-gray-200 dark:bg-gray-800 py-24 px-4 md:px-0">

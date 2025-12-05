@@ -1,12 +1,26 @@
-import { Search, Menu, Link } from "lucide-react";
-import { useContext } from "react";
+import { Search, Menu, X } from "lucide-react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { ThemeContext } from "../context/ThemeContext";
+// import axios from "axios";
 
-const links = ["Biznes", "Elm", "Texnologiya", "Təhsil", "Idman"];
+const links = ["Business", "World", "Technology", "Education", "Sports"];
 
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const [open, setOpen] = useState(false);
+  // const handleSearch = async (e) => {
+  //   const search = e.target.value;
+  //   try {
+  //     const res = await axios.get(
+  //       `https://newsdata.io/api/1/latest?${import.meta.env.VITE_API_KEY}&q=${search}&country=az,am&language=hy,az&category=business,education,science,sports,technology&removeduplicate=0`
+  //     );
+  //     setArticles(res.data.articles);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -20,17 +34,20 @@ const Navbar = () => {
     <div className="fixed w-full bg-white dark:bg-blue-900 z-10 shadow-md">
       <div className=" max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="md:text-2xl text-lg font-bold text-blue-400 cursor-pointer">
-          ZƏRDABİ
-        </div>
+        <Link to={"/"}>
+          <div className="md:text-2xl text-lg font-bold text-blue-400 cursor-pointer">
+            ZƏRDABİ
+          </div>
+        </Link>
 
         {/* Deskop Links */}
 
         <div className="hidden md:flex space-x-6">
           {links.map((link) => {
             return (
-              <Link to={link}
-                  key={link}
+              <Link
+                to={`/${link.toLocaleLowerCase()}`}
+                key={link}
                 className="text-gray-700 dark:text-gray-200 hover:text-white hover:text-blue-600 transition cursor-pointer"
               >
                 {link}
@@ -42,6 +59,7 @@ const Navbar = () => {
           <div className="relative bg-gray-200 p-2 rounded-lg  dark:text-gray-200 dark:bg-blue-400">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <input
+              // onChange={handleSearch}
               type="text"
               placeholder="Axtarış..."
               className="md:pl-10 pl-7 w-30 md:w-64 outline=none focus:outline-none "
@@ -55,11 +73,29 @@ const Navbar = () => {
           </button>
           {/* Mobile menu button */}
 
-          <button className="bg-gray-200 px-2 py-2 rounded-lg md:hidden  dark:text-gray-200 dark:bg-blue-400">
-            <Menu size={25} />
+          <button
+            onClick={() => setOpen(!open)}
+            className="bg-gray-200 px-2 py-2 rounded-lg md:hidden  dark:text-gray-200 dark:bg-blue-400"
+          >
+            {open ? <X size={25} /> : <Menu size={25} />}
           </button>
         </div>
       </div>
+      {/* mobil menu */}
+      {open && (
+        <div className="md:hidden px-4 pb-4">
+          {links.map((link) => {
+           return <Link
+              key={link}
+              to={`/${link.toLocaleLowerCase()}`}
+              onClick={() => setOpen(false)}
+              className="block py-2 text-gray-700 dark:text-gray-200 dark:hover:text-white hover:text-blue-600 transition"
+            >
+              {link}
+            </Link>;
+          })}
+        </div>
+      )}
     </div>
   );
 };
