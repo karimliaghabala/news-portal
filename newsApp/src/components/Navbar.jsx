@@ -35,8 +35,9 @@ const Navbar = () => {
       <div className=" max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to={"/"}>
-          <div className="md:text-2xl text-lg font-bold text-blue-400 cursor-pointer">
+          <div className="md:text-2xl text-sm font-bold text-blue-400 cursor-pointer">
             ZƏRDABİ
+            <p className="text-center" >MEDİA</p>
           </div>
         </Link>
 
@@ -62,7 +63,7 @@ const Navbar = () => {
               // onChange={handleSearch}
               type="text"
               placeholder="Axtarış..."
-              className="md:pl-10 pl-7 w-30 md:w-64 outline=none focus:outline-none "
+              className="md:pl-10 pl-7 w-20 md:w-64 outline=none focus:outline-none "
             />
           </div>
           <button
